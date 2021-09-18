@@ -1,6 +1,8 @@
 <?php
 
-class ComputerPlayer extends Player{
+namespace Player;
+
+class Computer extends Base{
 
     public $m_searcher;
     public $m_depth;

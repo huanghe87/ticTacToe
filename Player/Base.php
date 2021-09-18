@@ -1,6 +1,8 @@
 <?php
 
-class Player{
+namespace Player;
+
+class Base{
 
     public $m_playerId;
     public $m_playerName;
@@ -30,7 +32,7 @@ class Player{
         return $this->m_state;
     }
 
-    function SetGameState($state){
+    function SetGameState(\Game\State $state){
         $this->m_state = $state;
     }
 

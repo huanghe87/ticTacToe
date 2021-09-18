@@ -1,11 +1,13 @@
 <?php
 
-class GameState{
+namespace Game;
+
+class State{
 
     public $m_playerId;
     public $m_board = [];
 
-    function __construct($state = null){
+    function __construct(State $state = null){
         if($state){
             $this->m_playerId = $state->m_playerId;
             for($i = 0; $i < BOARD_CELLS; $i++){
@@ -149,90 +151,3 @@ class GameState{
             return ($player_id == PLAYER_B) ? CELL_X : CELL_O;
     }
 }
-
-#if 0
-//int GameState::Evaluate(int max_player_id)
-//{
-//    int min =  GetPeerPlayer(max_player_id);
-//
-//    int aOne, aTwo, aThree, bOne, bTwo, bThree;
-//    CountPlayerChess(max_player_id, aOne, aTwo, aThree);
-//    CountPlayerChess(min, bOne, bTwo, bThree);
-//
-//    if(aThree > 0)
-//    {
-//        return GAME_INF;
-//    }
-//    if(bThree > 0)
-//    {
-//        return -GAME_INF;
-//    }
-//
-//    if(CountEmptyCell() == 0)
-//    {
-//        return DRAW;
-//    }
-//
-//    return (aTwo - bTwo) * DOUBLE_WEIGHT + (aOne - bOne);
-//}
-//
-//int CGameState::Evaluate()
-//{
-//    CellType cth = CellTypeFromPlayer(Human);
-//    CellType ctc = CellTypeFromPlayer(Computer);
-//
-//    int cOne, cTwo, cThree, hOne, hTwo, hThree;
-//    CountPlayerChess(ctc, cOne, cTwo, cThree);
-//    CountPlayerChess(cth, hOne, hTwo, hThree);
-//
-//    if(cThree > 0)
-//    {
-//        return GAME_INF;
-//    }
-//    if(hThree > 0)
-//    {
-//        return -GAME_INF;
-//    }
-//
-//    if(IsComputerPlayer() && (hTwo > 0))
-//    {
-//        return -(WIN_LEVEL + (hTwo - cTwo) * DOUBLE_WEIGHT);
-//    }
-//    if(IsHumanPlayer() && (cTwo > 0))
-//    {
-//        return WIN_LEVEL + (cTwo - hTwo) * DOUBLE_WEIGHT;
-//    }
-//
-//    if(CountEmptyCell() == 0)
-//    {
-//        return DRAW;
-//    }
-//
-//    return cOne - hOne;
-//}
-//
-//int CGameState::Evaluate()
-//{
-//    CellType cth = CellTypeFromPlayer(Human);
-//    CellType ctc = CellTypeFromPlayer(Computer);
-//
-//    int cOne, cTwo, cThree, hOne, hTwo, hThree;
-//    CountPlayerChess(ctc, cOne, cTwo, cThree);
-//    CountPlayerChess(cth, hOne, hTwo, hThree);
-//
-//    if(cThree > 0)
-//    {
-//        return GAME_INF;
-//    }
-//    if(hThree > 0)
-//    {
-//        return -GAME_INF;
-//    }
-//    if(CountEmptyCell() == 0)
-//    {
-//        return DRAW;
-//    }
-//
-//    return (cTwo * DOUBLE_WEIGHT + cOne) - (hTwo * DOUBLE_WEIGHT - hOne);
-//}
-#endif

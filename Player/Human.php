@@ -1,6 +1,8 @@
 <?php
 
-class HumanPlayer extends Player{
+namespace Player;
+
+class Human extends Base{
 
     function GetNextPosition(){
         if($this->m_state == NULL){

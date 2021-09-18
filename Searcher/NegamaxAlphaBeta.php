@@ -1,15 +1,11 @@
 <?php
 
-class NegamaxAlphaBetaSearcher{
+namespace Searcher;
 
-    public $m_evaluator;
+class NegamaxAlphaBeta extends Base{
 
-    function __construct($evaluator){
-        $this->m_evaluator = $evaluator;
-    }
-
-    function SearchBestPlay(GameState $state, $depth){
-        $bestCell = -1;
+    public function SearchBestPlay(\Game\State $state, $depth){
+        $bestPos = -1;
         $bestValue = -GAME_INF;
         $max_player_id = $state->GetCurrentPlayer();
         for($i = 0; $i < BOARD_CELLS; $i++){
@@ -19,16 +15,16 @@ class NegamaxAlphaBetaSearcher{
                 $value = -$this->NegaMax($state, $depth - 1, -GAME_INF, GAME_INF, $max_player_id);
                 if($value >= $bestValue){
                     $bestValue = $value;
-                    $bestCell = $i;
+                    $bestPos = $i;
                 }
                 $state->ClearGameCell($i);
             }
         }
         $state->SetCurrentPlayer($max_player_id);
-        return $bestCell;
+        return $bestPos;
     }
 
-    function EvaluateNegaMax(GameState $state, $max_player_id)
+    public function EvaluateNegaMax(\Game\State $state, $max_player_id)
     {
         if($state->GetCurrentPlayer() == $max_player_id)
             return $this->m_evaluator->Evaluate($state, $max_player_id);
@@ -36,7 +32,7 @@ class NegamaxAlphaBetaSearcher{
             return -$this->m_evaluator->Evaluate($state, $max_player_id);
     }
 
-    function NegaMax(GameState $state, $depth, $alpha, $beta, $max_player_id){
+    public function NegaMax(\Game\State $state, $depth, $alpha, $beta, $max_player_id){
         if($state->IsGameOver() || ($depth == 0)){
             return $this->EvaluateNegaMax($state, $max_player_id);
         }

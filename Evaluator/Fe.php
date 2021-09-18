@@ -1,8 +1,10 @@
 <?php
 
-class FeEvaluator{
+namespace Evaluator;
 
-    function Evaluate($state, $player_id){
+class Fe implements Base{
+
+    public function Evaluate(\Game\State $state, $player_id){
         $min =  GetPeerPlayer($player_id);
         $this->CountPlayerChess($state, $player_id, $aOne, $aTwo, $aThree);
         $this->CountPlayerChess($state, $min, $bOne, $bTwo, $bThree);
@@ -15,7 +17,7 @@ class FeEvaluator{
         return ($aTwo - $bTwo) * DOUBLE_WEIGHT + ($aOne - $bOne);
     }
 
-    function CountPlayerChess($state, $player_id, &$countOne, &$countTwo, &$countThree){
+    public function CountPlayerChess(\Game\State $state, $player_id, &$countOne, &$countTwo, &$countThree){
         global $line_idx_tbl;
         $countOne = $countTwo = $countThree = 0;
         for($i = 0; $i < LINE_DIRECTION; $i++){

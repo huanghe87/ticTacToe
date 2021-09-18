@@ -1,11 +1,13 @@
 <?php
 
-class GameControl{
+namespace Game;
+
+class Control{
 
     public $m_gameState;
     public $m_players;
 
-    function SetPlayer(Player $player, $player_id){
+    function SetPlayer(\Player\Base $player, $player_id){
         $player->SetPlayerId($player_id);
         $player->SetGameState($this->m_gameState);
         $this->m_players[$player_id] = $player;
@@ -18,7 +20,7 @@ class GameControl{
         return NULL;
     }
 
-    function InitGameState(GameState $state){
+    function InitGameState(\Game\State $state){
         $this->m_gameState = $state;
     }
 
