@@ -27,7 +27,7 @@ class Computer extends Base{
         }
         $row = intval($np / BOARD_COL);
         $col = $np % BOARD_COL;
-        echo $this->GetPlayerName() . " play at [" . ($row + 1) . " , " . ($col + 1) . "]" . PHP_EOL;
+        printMsg($this->GetPlayerName() . " play at [" . ($row + 1) . " , " . ($col + 1) . "]" . PHP_EOL);
         return $np;
     }
 
