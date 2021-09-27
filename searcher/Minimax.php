@@ -31,7 +31,7 @@ class Minimax extends Base{
         $currentPlayer = $state->getCurrentPlayer();
         $score = ($currentPlayer == $maxPlayerId) ? -GAME_INF : GAME_INF;
         for($i = 0; $i < BOARD_CELLS; $i++){
-            if ($state->isEmptyCell($i)) {
+            if($state->isEmptyCell($i)){
                 $state->setGameCell($i, $currentPlayer);
                 $state->switchPlayer();
                 $value = $this->miniMax($state, $depth - 1, $maxPlayerId);
