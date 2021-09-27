@@ -1,11 +1,11 @@
 <?php
 
-namespace Player;
+namespace player;
 
 class Human extends Base{
 
-    function GetNextPosition(){
-        if($this->m_state == NULL){
+    function getNextPosition(){
+        if($this->mState == NULL){
             exit('HumanPlayer的m_state不能为null');
         }
         $np = 0;
@@ -32,8 +32,8 @@ class Human extends Base{
             $col = $inputArr[1];
             $np = ($row - 1) * BOARD_COL + ($col - 1);
             if( (($np >= 0) && ($np < 9))
-                && $this->m_state->IsEmptyCell($np) ){
-                echo $this->GetPlayerName() . " play at [" . ($row + 1) . " , " . ($col + 1) . "]" . PHP_EOL;
+                && $this->mState->isEmptyCell($np) ){
+                echo $this->getPlayerName() . " play at [" . ($row + 1) . " , " . ($col + 1) . "]" . PHP_EOL;
                 break;
             }else{
                 echo "Invalid position on (" . $row . " , " . $col . ")" . PHP_EOL;

@@ -20,9 +20,9 @@ const PLAYER_B = 2;
 const LINE_DIRECTION = 8;
 const LINE_CELLS = 3;
 
-const SEARCH_DEPTH = 6;
+const SEARCH_DEPTH = 9;
 
-$line_idx_tbl = [
+$lineIdxTbl = [
     [0, 1, 2], //第一行
     [3, 4, 5], //第二行
     [6, 7, 8], //第三行

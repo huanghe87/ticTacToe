@@ -2,27 +2,31 @@
 
 require_once 'include/loader.php';
 
-$feFunc = new Evaluator\Fe();
-//$ms = new Searcher\Minimax($feFunc);
-//$ns = new Searcher\Negamax($feFunc);
-//$abs = new Searcher\AlphaBeta($feFunc);
-$nabs = new Searcher\NegamaxAlphaBeta($feFunc);
-$human = new Player\Human("huanghe");
-$computer = new Player\Computer("xiaogang");
-$computer->SetSearcher($nabs, SEARCH_DEPTH);
-$initState = new Game\State();
-$initState->InitGameState(PLAYER_A);
-$gc = new Game\Control();
-$gc->InitGameState($initState);
-$gc->SetPlayer($computer, PLAYER_A);
-$gc->SetPlayer($human, PLAYER_B);
+$feFunc = new evaluator\Fe();
+//$searcher = new searcher\Minimax($feFunc);
+//$searcher = new searcher\Negamax($feFunc);
+//$searcher = new searcher\AlphaBeta($feFunc);
+$searcher = new searcher\NegamaxAlphaBeta($feFunc);
+$human = new player\Human("huanghe");
+$computer = new player\Computer("xiaogang");
+$computer->setSearcher($searcher, SEARCH_DEPTH);
+$initState = new game\State();
+$initState->initGameState(PLAYER_A);
+$gc = new game\Control();
+//$initState->setGameCell(8, PLAYER_A);
+//$initState->setGameCell(4, PLAYER_B);
+//$initState->setGameCell(7, PLAYER_A);
+//$initState->setGameCell(6, PLAYER_B);
+$gc->initGameState($initState);
+$gc->setPlayer($computer, PLAYER_A);
+$gc->setPlayer($human, PLAYER_B);
 if(PHP_SAPI=='cli'){
-    $winner = $gc->Run();
+    $winner = $gc->run();
     if($winner == PLAYER_NULL){
         echo "GameOver, Draw!" . PHP_EOL;
     }else{
-        $winnerPlayer = $gc->GetPlayer($winner);
-        echo "GameOver, " . $winnerPlayer->GetPlayerName() . " Win!" . PHP_EOL;
+        $winnerPlayer = $gc->getPlayer($winner);
+        echo "GameOver, " . $winnerPlayer->getPlayerName() . " Win!" . PHP_EOL;
     }
 }else{
     $type = isset($_REQUEST['type'])?trim($_REQUEST['type']):'0';
@@ -35,6 +39,6 @@ if(PHP_SAPI=='cli'){
         if(!in_array($pos, range(0, 8))){
             $pos = -1;
         }
-        $gc->RunWeb($pos);
+        $gc->runWeb($pos);
     }
 }

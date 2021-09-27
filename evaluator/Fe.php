@@ -1,13 +1,13 @@
 <?php
 
-namespace Evaluator;
+namespace evaluator;
 
 class Fe implements Base{
 
-    public function Evaluate(\Game\State $state, $player_id){
-        $min =  GetPeerPlayer($player_id);
-        $this->CountPlayerChess($state, $player_id, $aOne, $aTwo, $aThree);
-        $this->CountPlayerChess($state, $min, $bOne, $bTwo, $bThree);
+    public function evaluate(\game\State $state, $playerId){
+        $min =  getPeerPlayer($playerId);
+        $this->countPlayerChess($state, $playerId, $aOne, $aTwo, $aThree);
+        $this->countPlayerChess($state, $min, $bOne, $bTwo, $bThree);
         if($aThree > 0){
             return GAME_INF;
         }
@@ -17,17 +17,17 @@ class Fe implements Base{
         return ($aTwo - $bTwo) * DOUBLE_WEIGHT + ($aOne - $bOne);
     }
 
-    public function CountPlayerChess(\Game\State $state, $player_id, &$countOne, &$countTwo, &$countThree){
-        global $line_idx_tbl;
+    public function countPlayerChess(\game\State $state, $playerId, &$countOne, &$countTwo, &$countThree){
+        global $lineIdxTbl;
         $countOne = $countTwo = $countThree = 0;
         for($i = 0; $i < LINE_DIRECTION; $i++){
             $sameCount = 0;
             $empty = 0;
             for($j = 0; $j < LINE_CELLS; $j++){
-                if($state->GetGameCell($line_idx_tbl[$i][$j]) == $player_id){
+                if($state->GetGameCell($lineIdxTbl[$i][$j]) == $playerId){
                     $sameCount++;
                 }
-                if($state->GetGameCell($line_idx_tbl[$i][$j]) == PLAYER_NULL){
+                if($state->GetGameCell($lineIdxTbl[$i][$j]) == PLAYER_NULL){
                     $empty++;
                 }
             }
