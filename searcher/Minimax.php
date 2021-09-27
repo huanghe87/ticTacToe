@@ -7,37 +7,37 @@ class Minimax extends Base{
     public function searchBestPlay(\game\State $state, $depth){
         $bestValue = -GAME_INF;
         $bestPos = -1;
-        $max_player_id = $state->getCurrentPlayer();
+        $maxPlayerId = $state->getCurrentPlayer();
         for ($i = 0; $i < BOARD_CELLS; $i++){
             if($state->isEmptyCell($i)){
-                $state->setGameCell($i, $max_player_id);
+                $state->setGameCell($i, $maxPlayerId);
                 $state->switchPlayer();
-                $value = $this->miniMax($state, $depth - 1, $max_player_id);
+                $value = $this->miniMax($state, $depth - 1, $maxPlayerId);
                 if($value >= $bestValue){
                     $bestValue = $value;
                     $bestPos = $i;
                 }
                 $state->clearGameCell($i);
-                $state->setCurrentPlayer($max_player_id);
+                $state->setCurrentPlayer($maxPlayerId);
             }
         }
         return $bestPos;
     }
 
-    public function miniMax(\game\State $state, $depth, $max_player_id){
+    public function miniMax(\game\State $state, $depth, $maxPlayerId){
         if($state->isGameOver() || ($depth == 0)){
-            return $this->mEvaluator->evaluate($state, $max_player_id);
+            return $this->mEvaluator->evaluate($state, $maxPlayerId);
         }
         $current_player = $state->getCurrentPlayer();
-        $score = ($current_player == $max_player_id) ? -GAME_INF : GAME_INF;
+        $score = ($current_player == $maxPlayerId) ? -GAME_INF : GAME_INF;
         for($i = 0; $i < BOARD_CELLS; $i++){
             if ($state->isEmptyCell($i)) {
                 $state->setGameCell($i, $current_player);
                 $state->switchPlayer();
-                $value = $this->miniMax($state, $depth - 1, $max_player_id);
+                $value = $this->miniMax($state, $depth - 1, $maxPlayerId);
                 $state->switchPlayer();
                 $state->clearGameCell($i);
-                if($current_player == $max_player_id){
+                if($current_player == $maxPlayerId){
                     $score = max($score, $value);
                 }else{
                     $score = min($score, $value);
