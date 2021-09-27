@@ -117,7 +117,7 @@ class MyRedis extends Redis{
         return parent::exec();
     }
 
-    public function IsMulti(){
+    public function isMulti(){
         return $this->isMulti;
     }
 

@@ -5,7 +5,7 @@ namespace player;
 class Human extends Base{
 
     function getNextPosition(){
-        if($this->mState == NULL){
+        if($this->mState == null){
             exit('HumanPlayer的m_state不能为null');
         }
         $np = 0;

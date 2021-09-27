@@ -42,7 +42,7 @@ class Negamax extends Base{
             if($state->isEmptyCell($i)){
                 $state->setGameCell($i, $state->getCurrentPlayer());
                 $state->switchPlayer();
-                $value = -$this->NegaMax($state, $depth - 1, -$color, $maxPlayerId);
+                $value = -$this->negaMax($state, $depth - 1, -$color, $maxPlayerId);
                 $state->switchPlayer();
                 $state->clearGameCell($i);
                 $score = max($score, $value);

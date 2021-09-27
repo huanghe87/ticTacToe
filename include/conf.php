@@ -3,23 +3,16 @@
 const BOARD_ROW = 3;
 const BOARD_COL = 3;
 const BOARD_CELLS = BOARD_ROW * BOARD_COL;
-
 const GAME_INF = 100;
-//const WIN_LEVEL = 80;
-//const DRAW = 0;
 const DOUBLE_WEIGHT = 10;
-
 const CELL_EMPTY = '-';
 const CELL_O = 'o';
 const CELL_X = 'x';
-
 const PLAYER_NULL = 0;
 const PLAYER_A = 1;
 const PLAYER_B = 2;
-
 const LINE_DIRECTION = 8;
 const LINE_CELLS = 3;
-
 const SEARCH_DEPTH = 9;
 
 $lineIdxTbl = [

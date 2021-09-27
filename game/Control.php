@@ -17,7 +17,7 @@ class Control{
         if(isset($this->mPlayers[$playerId])){
             return $this->mPlayers[$playerId];
         }
-        return NULL;
+        return null;
     }
 
     function initGameState(\game\State $state){
@@ -28,7 +28,7 @@ class Control{
         while(!$this->mGameState->isGameOver()){
             $playerId = $this->mGameState->getCurrentPlayer();
             $currentPlayer = $this->getPlayer($playerId);
-            if($currentPlayer == NULL){
+            if($currentPlayer == null){
                 exit('GameControl的currentPlayer不能为null'.PHP_EOL);
             }
             $np = $currentPlayer->getNextPosition();
@@ -60,7 +60,7 @@ class Control{
             if(!$this->mGameState->isGameOver()){
                 $playerId = $this->mGameState->getCurrentPlayer();
                 $currentPlayer = $this->getPlayer($playerId);
-                if($currentPlayer == NULL){
+                if($currentPlayer == null){
                     exit('GameControl的currentPlayer不能为null'.PHP_EOL);
                 }
                 $np = $currentPlayer->getNextPosition();

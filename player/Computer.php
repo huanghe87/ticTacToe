@@ -9,15 +9,15 @@ class computer extends Base{
 
     function __construct($name){
         parent::__construct($name);
-        $this->mSearcher = NULL;
+        $this->mSearcher = null;
         $this->mDepth = 3;
     }
 
     function getNextPosition(){
-        if($this->mState == NULL){
+        if($this->mState == null){
             exit('ComputerPlayer的m_state不能为null'.PHP_EOL);
         }
-        if($this->mSearcher == NULL){
+        if($this->mSearcher == null){
             exit('ComputerPlayer的m_searcher不能为null'.PHP_EOL);
         }
         $np = $this->mSearcher->searchBestPlay($this->mState, $this->mDepth);

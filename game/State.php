@@ -63,18 +63,18 @@ class State{
     }
 
     function isGameOver(){
-        if($this->countEmptyCell() == 0)
+        if($this->countEmptyCell() == 0){
             return true;
-
+        }
         $aThree = $this->countThreeLine($this->mPlayerId);
-        if($aThree != 0)
+        if($aThree != 0){
             return true;
-
+        }
         $min = getPeerPlayer($this->mPlayerId);
         $bThree = $this->countThreeLine($min);
-        if($bThree != 0)
+        if($bThree != 0){
             return true;
-
+        }
         return false;
     }
 
