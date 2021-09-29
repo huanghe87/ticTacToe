@@ -1,2 +1,2 @@
 # ticTacToe
-井字棋
+井字棋AI
