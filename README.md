@@ -23,7 +23,7 @@ server {
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_pass 127.0.0.1:9000;
         fastcgi_index index.php;
-   }
+    }
 }
 ```
 打开谷歌浏览器，输入网址 http://php.test/ticTacToe ，即可开始游戏
