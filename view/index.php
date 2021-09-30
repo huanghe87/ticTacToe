@@ -33,11 +33,6 @@
 <div class="endgame" <?php if(!empty($gameOver)){echo 'style="display:block"';} ?>>
     <div class="text"><?php if(!empty($gameOver)){echo $gameOver;} ?></div>
 </div>
-<!--<div class = "selectSym">-->
-<!--    <p>Select symbol:</p>-->
-<!--    <button onClick="selectSym('X')">X</button>-->
-<!--    <button onClick="selectSym('O')">O</button>-->
-<!--</div>-->
 <button onClick="startGame()">Replay</button>
 <script src="web/js/script.js"></script>
 </body>

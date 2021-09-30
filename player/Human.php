@@ -2,8 +2,14 @@
 
 namespace player;
 
+/**
+ * 人类玩家类
+ */
 class Human extends Base{
 
+    /**
+     * 获取人类玩家落子位置
+     */
     function getNextPosition(){
         if($this->mState == null){
             exit('HumanPlayer的m_state不能为null');

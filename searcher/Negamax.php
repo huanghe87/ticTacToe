@@ -2,6 +2,9 @@
 
 namespace searcher;
 
+/**
+ * 负极大值搜索类
+ */
 class Negamax extends Base{
 
     public function searchBestPlay(\game\State $state, $depth){

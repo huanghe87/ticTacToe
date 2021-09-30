@@ -2,6 +2,9 @@
 
 namespace searcher;
 
+/**
+ * α-β剪枝搜索类
+ */
 class AlphaBeta extends Base{
 
     public function searchBestPlay(\game\State $state, $depth){

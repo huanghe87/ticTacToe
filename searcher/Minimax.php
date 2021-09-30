@@ -2,6 +2,9 @@
 
 namespace searcher;
 
+/**
+ * 极大极小值搜索类
+ */
 class Minimax extends Base{
 
     public function searchBestPlay(\game\State $state, $depth){

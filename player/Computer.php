@@ -2,17 +2,29 @@
 
 namespace player;
 
+/**
+ * 机器玩家类
+ */
 class computer extends Base{
 
+    //采用的搜索算法
     public $mSearcher;
+
+    //搜索深度
     public $mDepth;
 
+    /**
+     * 构造方法
+     */
     function __construct($name){
         parent::__construct($name);
         $this->mSearcher = null;
         $this->mDepth = 3;
     }
 
+    /**
+     * 获取机器落子位置
+     */
     function getNextPosition(){
         if($this->mState == null){
             exit('ComputerPlayer的m_state不能为null'.PHP_EOL);
@@ -31,6 +43,9 @@ class computer extends Base{
         return $np;
     }
 
+    /**
+     * 设置机器采用的搜索算法和搜索深度
+     */
     function setSearcher($searcher, $depth){
         $tmp = $this->mSearcher;
         $this->mSearcher = $searcher;

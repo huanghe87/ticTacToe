@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 视图类，网页模式用
+ */
 class MyView{
 
     public $var = [];

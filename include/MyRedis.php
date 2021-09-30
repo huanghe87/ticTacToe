@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * redis操作类，网页模式用
+ */
 class MyRedis extends Redis{
     public $config = array(
         'server' => "127.0.0.1",
