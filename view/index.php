@@ -3,14 +3,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>井字棋</title>
-
+    <title>井字棋AI</title>
     <link rel="stylesheet" href="web/css/style.css">
 
 </head>
-
 <body>
-
 <table>
     <?php
     foreach($board as $pos => $cell){
