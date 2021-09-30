@@ -1,11 +1,11 @@
-#井字棋AI
-##运行环境要求
+# 井字棋AI
+## 运行环境要求
 + PHP >= 7.0
 + Redis
 + Nginx
-##命令行运行
+## 命令行运行
 cd 进入ticTacToe目录，输入 php index.php 回车后执行即可
-##网页运行
+## 网页运行
 配置nginx的虚拟主机
 ```
 server {
