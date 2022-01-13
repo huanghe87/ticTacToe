@@ -2,7 +2,8 @@
 
 namespace evaluator;
 
-interface Base{
+interface Base
+{
 
     public function evaluate(\Game\State $state, $player_id);
 

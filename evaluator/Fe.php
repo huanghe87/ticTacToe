@@ -5,7 +5,8 @@ namespace evaluator;
 /**
  * 棋局评估函数
  */
-class Fe implements Base{
+class Fe implements Base
+{
 
     /**
      * 评估当前棋局得分
@@ -17,14 +18,15 @@ class Fe implements Base{
      * </p>
      * @return int 当前棋局得分
      */
-    public function evaluate(\game\State $state, $playerId){
-        $min =  getPeerPlayer($playerId);
+    public function evaluate(\game\State $state, $playerId)
+    {
+        $min = getPeerPlayer($playerId);
         list($aOne, $aTwo, $aThree) = $this->countPlayerChess($state, $playerId);
         list($bOne, $bTwo, $bThree) = $this->countPlayerChess($state, $min);
-        if($aThree > 0){
+        if ($aThree > 0) {
             return GAME_INF;
         }
-        if($bThree > 0){
+        if ($bThree > 0) {
             return -GAME_INF;
         }
         return ($aTwo - $bTwo) * DOUBLE_WEIGHT + ($aOne - $bOne);
@@ -40,27 +42,28 @@ class Fe implements Base{
      * </p>
      * @return array 棋盘各行一二三子数量
      */
-    public function countPlayerChess(\game\State $state, $playerId){
+    public function countPlayerChess(\game\State $state, $playerId)
+    {
         global $lineIdxTbl;
         $countOne = $countTwo = $countThree = 0;
-        for($i = 0; $i < LINE_DIRECTION; $i++){
+        for ($i = 0; $i < LINE_DIRECTION; $i++) {
             $sameCount = 0;
             $empty = 0;
-            for($j = 0; $j < BOARD_COL; $j++){
-                if($state->GetGameCell($lineIdxTbl[$i][$j]) == $playerId){
+            for ($j = 0; $j < BOARD_COL; $j++) {
+                if ($state->GetGameCell($lineIdxTbl[$i][$j]) == $playerId) {
                     $sameCount++;
                 }
-                if($state->GetGameCell($lineIdxTbl[$i][$j]) == PLAYER_NULL){
+                if ($state->GetGameCell($lineIdxTbl[$i][$j]) == PLAYER_NULL) {
                     $empty++;
                 }
             }
-            if(($sameCount == 1) && ($empty == 2)){
+            if (($sameCount == 1) && ($empty == 2)) {
                 $countOne++;
             }
-            if(($sameCount == 2) && ($empty == 1)){
+            if (($sameCount == 2) && ($empty == 1)) {
                 $countTwo++;
             }
-            if(($sameCount == 3) && ($empty == 0)){
+            if (($sameCount == 3) && ($empty == 0)) {
                 $countThree++;
             }
         }

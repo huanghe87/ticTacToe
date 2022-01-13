@@ -5,7 +5,8 @@ namespace player;
 /**
  * 玩家基类
  */
-class Base{
+class Base
+{
 
     //玩家id
     public $mPlayerId;
@@ -19,49 +20,56 @@ class Base{
     /**
      * 构造方法，设置玩家名称
      */
-    function __construct($name){
+    function __construct($name)
+    {
         $this->setPlayerName($name);
     }
 
     /**
      * 获取玩家名称
      */
-    function getPlayerName(){
+    function getPlayerName()
+    {
         return $this->mPlayerName;
     }
 
     /**
      * 设置玩家名称
      */
-    function setPlayerName($name){
+    function setPlayerName($name)
+    {
         $this->mPlayerName = $name;
     }
 
     /**
      * 获取玩家id
      */
-    function getPlayerId(){
+    function getPlayerId()
+    {
         return $this->mPlayerId;
     }
 
     /**
      * 设置玩家id
      */
-    function setPlayerId($id){
+    function setPlayerId($id)
+    {
         $this->mPlayerId = $id;
     }
 
     /**
      * 获取棋局状态
      */
-    function getGameState(){
+    function getGameState()
+    {
         return $this->mState;
     }
 
     /**
      * 设置棋局状态
      */
-    function setGameState(\game\State $state){
+    function setGameState(\game\State $state)
+    {
         $this->mState = $state;
     }
 

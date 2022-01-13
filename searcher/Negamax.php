@@ -5,18 +5,20 @@ namespace searcher;
 /**
  * 负极大值搜索类
  */
-class Negamax extends Base{
+class Negamax extends Base
+{
 
-    public function searchBestPlay(\game\State $state, $depth){
-        $bestValue = -GAME_INF;
+    public function searchBestPlay(\game\State $state, $depth)
+    {
+        $bestValue = -GAME_INF - 1;
         $bestPos = 0;
         $maxPlayerId = $state->getCurrentPlayer();
-        for($i = 0; $i < BOARD_CELLS; $i++){
-            if($state->isEmptyCell($i)){
+        for ($i = 0; $i < BOARD_CELLS; $i++) {
+            if ($state->isEmptyCell($i)) {
                 $state->setGameCell($i, $maxPlayerId);
                 $state->switchPlayer();
                 $value = -$this->NegaMax($state, $depth - 1, -1, $maxPlayerId);
-                if($value >= $bestValue){
+                if ($value > $bestValue) {
                     $bestValue = $value;
                     $bestPos = $i;
                 }
@@ -27,22 +29,24 @@ class Negamax extends Base{
         return $bestPos;
     }
 
-    public function evaluateNegaMax(\game\State $state, $maxPlayerId){
-        if($state->getCurrentPlayer() == $maxPlayerId){
+    public function evaluateNegaMax(\game\State $state, $maxPlayerId)
+    {
+        if ($state->getCurrentPlayer() == $maxPlayerId) {
             return $this->mEvaluator->evaluate($state, $maxPlayerId);
-        }else{
+        } else {
             return -$this->mEvaluator->evaluate($state, $maxPlayerId);
         }
     }
 
-    public function negaMax(\game\State $state, $depth, $color, $maxPlayerId){
-        if($state->isGameOver() || ($depth == 0)){
+    public function negaMax(\game\State $state, $depth, $color, $maxPlayerId)
+    {
+        if ($state->isGameOver() || ($depth == 0)) {
             $val = $this->evaluateNegaMax($state, $maxPlayerId);
             return $val;
         }
         $score = -GAME_INF;
-        for($i = 0; $i < BOARD_CELLS; $i++){
-            if($state->isEmptyCell($i)){
+        for ($i = 0; $i < BOARD_CELLS; $i++) {
+            if ($state->isEmptyCell($i)) {
                 $state->setGameCell($i, $state->getCurrentPlayer());
                 $state->switchPlayer();
                 $value = -$this->negaMax($state, $depth - 1, -$color, $maxPlayerId);
